@@ -22,6 +22,10 @@ const favoriteBlog = (blogs) => {
   return blogs[favoriteBlogIndex]
 }
 
+const mostBlogs = (blogs) => {
+  return 1
+}
+
 module.exports = {
-  dummy, totalLikes, favoriteBlog
+  dummy, totalLikes, favoriteBlog, mostBlogs
 }
