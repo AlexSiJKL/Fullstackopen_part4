@@ -1,3 +1,5 @@
+const lodash = require('lodash');
+
 const dummy = (blogs) => {
   return 1
 }
@@ -27,20 +29,10 @@ const mostBlogs = (blogs) => {
     return null
   }
 
-  let blogsAuthors = {}
+  const groupedByAuthor = lodash.groupBy(blogs, 'author')
+  const authorBlogCounts = lodash.mapValues(groupedByAuthor, (blogs) => blogs.length)
+  const mostBlogsAuthor = lodash.maxBy(Object.entries(authorBlogCounts), ([, count]) => count)
 
-  blogs.forEach(blog => {
-    const author = blog.author
-    if (author in blogsAuthors) {
-      blogsAuthors[author] += 1
-    } else { 
-      blogsAuthors[author] = 1
-    }
-  })
-
-  const mostBlogsAuthor = Object.entries(blogsAuthors).reduce((max, current) => {
-    return current[1] > max[1] ? current : max
-  })
   return { author: mostBlogsAuthor[0], blogs: mostBlogsAuthor[1]}
 }
 
