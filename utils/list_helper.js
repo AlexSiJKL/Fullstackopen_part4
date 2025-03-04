@@ -23,7 +23,25 @@ const favoriteBlog = (blogs) => {
 }
 
 const mostBlogs = (blogs) => {
-  return 222
+  if (blogs.length === 0) {
+    return null
+  }
+
+  let blogsAuthors = {}
+
+  blogs.forEach(blog => {
+    const author = blog.author
+    if (author in blogsAuthors) {
+      blogsAuthors[author] += 1
+    } else { 
+      blogsAuthors[author] = 1
+    }
+  })
+
+  const mostBlogsAuthor = Object.entries(blogsAuthors).reduce((max, current) => {
+    return current[1] > max[1] ? current : max
+  })
+  return { author: mostBlogsAuthor[0], blogs: mostBlogsAuthor[1]}
 }
 
 module.exports = {
