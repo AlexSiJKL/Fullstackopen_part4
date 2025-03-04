@@ -23,7 +23,7 @@ const favoriteBlog = (blogs) => {
 }
 
 const mostBlogs = (blogs) => {
-  return 1
+  return 1111
 }
 
 module.exports = {
