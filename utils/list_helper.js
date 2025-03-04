@@ -13,6 +13,10 @@ const totalLikes = (blogs) => {
 }
 
 const favoriteBlog = (blogs) => {
+  if (blogs.length === 0) {
+    return null
+  }
+  
   let maxLikes = 0
   let favoriteBlogIndex = 0
   blogs.forEach((blog, index) => {
